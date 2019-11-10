@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -18,6 +19,7 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
 import { FormsModule } from '@angular/forms';
 import { DataStorageService } from './shared/dataStorage.service';
 import { RecipeService } from './recipes/recipe.service';
+import { CompAnimationComponent } from './comp-animation/comp-animation.component';
 
 @NgModule({
   declarations: [
@@ -31,13 +33,15 @@ import { RecipeService } from './recipes/recipe.service';
     ShoppingEditComponent,
     DropdownDirective,
     RecipeStartComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+    CompAnimationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule ,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule  
     
     
   ],
