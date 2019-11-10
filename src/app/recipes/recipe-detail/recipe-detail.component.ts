@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 
 import { Recipe } from '../recipe.model';
@@ -15,12 +15,13 @@ export class RecipeDetailComponent implements OnInit {
   recipe: Recipe;
   id : number ;
 
-  constructor(private recipeService : RecipeService , private router : ActivatedRoute) { }
+  constructor(private recipeService : RecipeService , private routerActiv : ActivatedRoute , private route : Router) { }
 
   ngOnInit() {
-    this.router.params.subscribe(
+    //get and update the index path child id
+    this.routerActiv.params.subscribe(
       (param : Params) => {
-         this.id = +param['id'] ;
+         this.id = +param['id'] ; // + convert the string to a number
          this.recipe = this.recipeService.getRecipeIndex(this.id);
          }
       )
@@ -28,5 +29,9 @@ export class RecipeDetailComponent implements OnInit {
 
   Addgredients(){
    this.recipeService.addTolistShop(this.recipe.ingredient)
+  }
+
+  OnEditRecipe(){
+     this.route.navigate(['edit'], {relativeTo : this.routerActiv}) ;
   }
 }
